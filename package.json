@@ -1,0 +1,63 @@
+{
+    "name": "ncfg",
+    "version": "0.0.0",
+    "description": "",
+    "main": "./dist/index.js",
+    "module": "./dist/ncfg.esm.js",
+    "files": [
+        "dist"
+    ],
+    "size-limit": [
+        {
+            "path": "dist/ncfg.cjs.production.min.js",
+            "limit": "10 KB"
+        },
+        {
+            "path": "dist/ncfg.esm.js",
+            "limit": "10 KB"
+        }
+    ],
+    "scripts": {
+        "build": "aqu build",
+        "start": "aqu watch",
+        "lint": "eslint .",
+        "lint:fix": "aqu lint --fix",
+        "test": "aqu test --passWithNoTests",
+        "test:watch": "aqu test --passWithNoTests --watch",
+        "test:coverage": "aqu test --ci --json --coverage --testLocationInResults --outputFile=\"report.json\"",
+        "prepare": "aqu build",
+        "release": "np",
+        "size": "size-limit",
+        "size:why": "size-limit --why"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx,json}": "npm run lint:fix"
+    },
+    "author": "sirse <artiom.tretjakovas2@gmail.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/ArtiomTr/ncfg#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ArtiomTr/ncfg.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ArtiomTr/ncfg/issues"
+    },
+    "devDependencies": {
+        "@size-limit/preset-small-lib": "^5.0.5",
+        "@types/jest": "^27.0.2",
+        "@types/node": "^16.10.1",
+        "aqu": "0.2.2",
+        "husky": "^7.0.2",
+        "lint-staged": "^11.1.2",
+        "np": "^7.5.0",
+        "size-limit": "^5.0.5",
+        "typescript": "^4.4.3"
+    },
+    "types": "./dist/ncfg.d.ts"
+}
