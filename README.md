@@ -1,27 +1,27 @@
-# ncfg
+# cfgn
 
 >
 
-[![npm version](https://img.shields.io/npm/v/ncfg)](https://www.npmjs.com/package/ncfg)
-[![npm downloads](https://img.shields.io/npm/dw/ncfg)](https://www.npmjs.com/package/ncfg)
-[![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/ncfg)](https://www.npmjs.com/package/ncfg)
+[![npm version](https://img.shields.io/npm/v/cfgn)](https://www.npmjs.com/package/cfgn)
+[![npm downloads](https://img.shields.io/npm/dw/cfgn)](https://www.npmjs.com/package/cfgn)
+[![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/cfgn)](https://www.npmjs.com/package/cfgn)
 
 ## Install
 
 ```bash
-npm install ncfg
+npm install cfgn
 ```
 
 Or
 
 ```bash
-yarn add ncfg
+yarn add cfgn
 ```
 
 ## Usage
 
 ```js
-import { ... } from "ncfg";
+import { ... } from "cfgn";
 ```
 
 ## License
