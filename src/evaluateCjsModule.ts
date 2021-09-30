@@ -19,5 +19,5 @@ export const evaluateCjsModule = (code: string, filepath: string) => {
         breakOnSigint: true,
     });
 
-    return exports;
+    return context.module.exports;
 };
