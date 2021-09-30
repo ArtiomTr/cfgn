@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { evaluateCjsModule } from '../src/evaluateCjsModule';
-import { inspect } from 'util';
 
 describe('evaluateCjsModule', () => {
     it('should evaluate commonjs module', () => {
