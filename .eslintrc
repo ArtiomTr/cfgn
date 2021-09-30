@@ -6,6 +6,9 @@
         "sourceType": "module",
         "ecmaFeatures": {}
     },
+    "env": {
+        "node": true
+    },
     "plugins": ["@typescript-eslint", "simple-import-sort"],
     "extends": [
         "eslint:recommended",
