@@ -8,6 +8,20 @@ beforeEach(() => {
 
 describe('parseEsmConfiguration', () => {
     it('should parse esm configuration', async () => {
+        (build as jest.Mock<any, any>).mockImplementation(() => {
+            return {
+                outputFiles: [
+                    {
+                        text: `const path = require('path');
+module.exports = {
+    hello: 'world',
+    somepath: path.resolve(path.dirname(__filename), 'something')   
+}`,
+                    },
+                ],
+            };
+        });
+
         expect(await parseEsmConfiguration(resolve(__dirname, 'exampleConfig.mjs'))).toMatchObject({
             hello: 'world',
             somepath: resolve(dirname(__filename), 'something'),
