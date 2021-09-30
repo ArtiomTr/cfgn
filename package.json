@@ -18,16 +18,6 @@
     "files": [
         "dist"
     ],
-    "size-limit": [
-        {
-            "path": "dist/cfgn.cjs.production.min.js",
-            "limit": "10 KB"
-        },
-        {
-            "path": "dist/cfgn.esm.js",
-            "limit": "10 KB"
-        }
-    ],
     "scripts": {
         "build": "aqu build",
         "start": "aqu watch",
@@ -37,18 +27,14 @@
         "test:watch": "aqu test --passWithNoTests --watch",
         "test:coverage": "aqu test --ci --json --coverage --testLocationInResults --outputFile=\"report.json\"",
         "prepare": "aqu build",
-        "release": "np",
-        "size": "size-limit",
-        "size:why": "size-limit --why"
+        "release": "np"
     },
     "devDependencies": {
-        "@size-limit/preset-small-lib": "^5.0.5",
         "@types/fs-extra": "^9.0.13",
         "@types/jest": "^27.0.2",
         "@types/node": "^16.10.1",
         "aqu": "0.2.2",
         "np": "^7.5.0",
-        "size-limit": "^5.0.5",
         "typescript": "^4.4.3"
     },
     "dependencies": {
