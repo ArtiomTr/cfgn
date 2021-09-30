@@ -4,6 +4,7 @@ node_modules
 .cache
 dist
 build
+coverage
 .rpt2_cache
 
 # misc
