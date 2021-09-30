@@ -1,9 +1,12 @@
 import { Format } from './Format';
 import { parseJsonConfiguration } from './parseJsonConfiguration';
 import { Parser } from './Parser';
+import { parseJsConfiguration } from '.';
 
 const parsers: Record<Format, Parser> = {
-    '.json': parseJsonConfiguration,
+    [Format.JSON]: parseJsonConfiguration,
+    [Format.JS]: parseJsConfiguration,
+    [Format.COMMONJS]: parseJsConfiguration,
 };
 
 export const parseConfiguration = (file: string, format: Format) => {

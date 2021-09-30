@@ -1,3 +1,3 @@
-export const resolveConfig = () => {
-    /** */
-};
+export * from './parseConfiguration';
+export * from './parseJsConfiguration';
+export * from './parseJsonConfiguration';
