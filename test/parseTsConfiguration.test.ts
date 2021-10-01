@@ -1,4 +1,4 @@
-import { parseEsmConfiguration } from '../src/parseEsmConfiguration';
+import { parseTsConfiguration } from '../src/parseTsConfiguration';
 import { dirname, resolve } from 'path';
 import { build } from 'esbuild';
 
@@ -22,7 +22,7 @@ module.exports = {
             };
         });
 
-        expect(await parseEsmConfiguration(resolve(__dirname, 'exampleConfig.ts'))).toMatchObject({
+        expect(await parseTsConfiguration(resolve(__dirname, 'exampleConfig.ts'))).toMatchObject({
             hello: 'world',
             somepath: resolve(dirname(__filename), 'something'),
         });
@@ -34,6 +34,6 @@ module.exports = {
             };
         });
 
-        await expect(parseEsmConfiguration(resolve(__dirname, 'exampleConfig.mjs'))).rejects.toBeDefined();
+        await expect(parseTsConfiguration(resolve(__dirname, 'exampleConfig.mjs'))).rejects.toBeDefined();
     });
 });
