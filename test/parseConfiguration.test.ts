@@ -15,53 +15,57 @@ jest.mock('../src/parseTsConfiguration');
 mockParsers();
 
 describe('parseConfiguration', () => {
-    it('should parse configuration (given esm format)', () => {
-        parseConfiguration('hello.ts', Format.ESMODULE);
+    it('should parse configuration (given esm format)', async () => {
+        await parseConfiguration('hello.ts', Format.ESMODULE);
         expect(parseEsmConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (given js format)', () => {
-        parseConfiguration('hello.config.c', Format.JS);
+    it('should parse configuration (given js format)', async () => {
+        await parseConfiguration('hello.config.c', Format.JS);
         expect(parseJsConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (given cjs format)', () => {
-        parseConfiguration('hello.config.c', Format.COMMONJS);
+    it('should parse configuration (given cjs format)', async () => {
+        await parseConfiguration('hello.config.c', Format.COMMONJS);
         expect(parseJsConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (given json format)', () => {
-        parseConfiguration('hello.js', Format.JSON);
+    it('should parse configuration (given json format)', async () => {
+        await parseConfiguration('hello.js', Format.JSON);
         expect(parseJsonConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (given ts format)', () => {
-        parseConfiguration('hello.jsx', Format.TS);
+    it('should parse configuration (given ts format)', async () => {
+        await parseConfiguration('hello.jsx', Format.TS);
         expect(parseTsConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (file format esm)', () => {
-        parseConfiguration('hello.mjs');
+    it('should parse configuration (file format esm)', async () => {
+        await parseConfiguration('hello.mjs');
         expect(parseEsmConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (file format js)', () => {
-        parseConfiguration('hello.js');
+    it('should parse configuration (file format js)', async () => {
+        await parseConfiguration('hello.js');
         expect(parseJsConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (file format cjs)', () => {
-        parseConfiguration('hello.cjs');
+    it('should parse configuration (file format cjs)', async () => {
+        await parseConfiguration('hello.cjs');
         expect(parseJsConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (file format json)', () => {
-        parseConfiguration('hello.json');
+    it('should parse configuration (file format json)', async () => {
+        await parseConfiguration('hello.json');
         expect(parseJsonConfiguration).toBeCalledOnlyThisParser();
     });
 
-    it('should parse configuration (file format ts)', () => {
-        parseConfiguration('hello.ts');
+    it('should parse configuration (file format ts)', async () => {
+        await parseConfiguration('hello.ts');
         expect(parseTsConfiguration).toBeCalledOnlyThisParser();
+    });
+
+    it('should fail on unknown format', async () => {
+        await expect(parseConfiguration('hello.asdf')).rejects.toBeDefined();
     });
 });
