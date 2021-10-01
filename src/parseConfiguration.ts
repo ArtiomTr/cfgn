@@ -1,3 +1,5 @@
+import { extname } from 'path';
+
 import { Format } from './Format';
 import { parseEsmConfiguration } from './parseEsmConfiguration';
 import { parseJsonConfiguration } from './parseJsonConfiguration';
@@ -13,7 +15,7 @@ const parsers: Record<Format, Parser> = {
     [Format.TS]: parseTsConfiguration,
 };
 
-export const parseConfiguration = (file: string, format: Format) => {
+export const parseConfiguration = async (file: string, format: Format = extname(file) as Format) => {
     if (format in parsers) {
         return parsers[format](file);
     }
