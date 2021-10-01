@@ -2,6 +2,7 @@ import { Format } from './Format';
 import { parseEsmConfiguration } from './parseEsmConfiguration';
 import { parseJsonConfiguration } from './parseJsonConfiguration';
 import { Parser } from './Parser';
+import { parseTsConfiguration } from './parseTsConfiguration';
 import { parseJsConfiguration } from '.';
 
 const parsers: Record<Format, Parser> = {
@@ -9,6 +10,7 @@ const parsers: Record<Format, Parser> = {
     [Format.JS]: parseJsConfiguration,
     [Format.COMMONJS]: parseJsConfiguration,
     [Format.ESMODULE]: parseEsmConfiguration,
+    [Format.TS]: parseTsConfiguration,
 };
 
 export const parseConfiguration = (file: string, format: Format) => {
