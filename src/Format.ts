@@ -3,4 +3,5 @@ export enum Format {
     JS = '.js',
     COMMONJS = '.cjs',
     ESMODULE = '.mjs',
+    TS = '.ts',
 }
