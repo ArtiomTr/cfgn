@@ -1,8 +1,9 @@
-import { getDefaultExport } from './getDefaultExport';
+import { readFile } from 'fs-extra';
+
+import { evaluateCjsModule } from './evaluateCjsModule';
 
 export const parseJsConfiguration = async (file: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const requiredConfiguration = require(file);
+    const content = await readFile(file);
 
-    return getDefaultExport(requiredConfiguration);
+    return evaluateCjsModule(content.toString(), file);
 };
