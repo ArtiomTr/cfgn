@@ -7,17 +7,18 @@ import { Parser } from './Parser';
 import { parseTsConfiguration } from './parseTsConfiguration';
 import { parseJsConfiguration } from '.';
 
-const parsers: Record<Format, Parser> = {
-    [Format.JSON]: parseJsonConfiguration,
-    [Format.JS]: parseJsConfiguration,
-    [Format.COMMONJS]: parseJsConfiguration,
-    [Format.ESMODULE]: parseEsmConfiguration,
-    [Format.TS]: parseTsConfiguration,
+const parsers: Record<Format, () => Parser> = {
+    [Format.JSON]: () => parseJsonConfiguration,
+    [Format.JS]: () => parseJsConfiguration,
+    [Format.COMMONJS]: () => parseJsConfiguration,
+    [Format.ESMODULE]: () => parseEsmConfiguration,
+    [Format.TS]: () => parseTsConfiguration,
 };
 
 export const parseConfiguration = async (file: string, format: Format = extname(file) as Format) => {
     if (format in parsers) {
-        return parsers[format](file);
+        const currentParser = parsers[format]();
+        return currentParser(file);
     }
 
     throw new Error('Unknown format');
