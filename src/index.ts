@@ -1,4 +1,5 @@
 export * from './parseConfiguration';
+export * from './parseConfigurations';
 export * from './parseJsConfiguration';
 export * from './parseJsonConfiguration';
 export * from './parseEsmConfiguration';
