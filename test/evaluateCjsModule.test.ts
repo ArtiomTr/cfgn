@@ -9,8 +9,9 @@ describe('evaluateCjsModule', () => {
 const { resolve } = require('path');
 
 module.exports = {
-value: 'hello',
-someValue: resolve(__dirname, 'entry.ts'),
+    value: 'hello',
+    someValue: resolve(__dirname, 'entry.ts'),
+    checkGlobal: process.cwd(),
 };
 `,
                 __filename,
@@ -18,6 +19,7 @@ someValue: resolve(__dirname, 'entry.ts'),
         ).toMatchObject({
             value: 'hello',
             someValue: resolve(__dirname, 'entry.ts'),
+            checkGlobal: process.cwd(),
         });
     });
 });
