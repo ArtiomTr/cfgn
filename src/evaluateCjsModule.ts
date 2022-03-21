@@ -8,6 +8,7 @@ export const evaluateCjsModule = (code: string, filepath: string) => {
     const exports = {};
 
     const context = createContext({
+        ...global,
         module: { exports },
         exports,
         require: createRequire(filepath),
